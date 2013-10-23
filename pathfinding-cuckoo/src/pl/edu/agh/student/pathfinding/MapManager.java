@@ -2,8 +2,11 @@ package pl.edu.agh.student.pathfinding;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
+import java.io.IOException;
 
-public class MapLoader {
+import javax.imageio.ImageIO;
+
+public class MapManager {
 
 	/*
 	 * http://stackoverflow.com/questions/2615522/java-bufferedimage-getting-red-green-and-blue-individually/2615537#2615537
@@ -31,7 +34,9 @@ public class MapLoader {
 	 * http://stackoverflow.com/questions/6524196/java-get-pixel-array-from-image
 	 * Gets image without using grb(x,y) method, which is said to be faster
 	 */
-	public static int[][] load(BufferedImage image) {
+	public int[][] load(String mapPath) throws IOException {
+		BufferedImage image = ImageIO.read(getClass().getResource(mapPath));
+		
 		final byte[] pixels = ((DataBufferByte) image.getRaster()
 				.getDataBuffer()).getData();
 		final int width = image.getWidth();
