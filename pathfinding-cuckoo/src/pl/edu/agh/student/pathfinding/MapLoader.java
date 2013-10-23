@@ -1,4 +1,4 @@
-package pl.edu.agh.student;
+package pl.edu.agh.student.pathfinding;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
@@ -31,7 +31,7 @@ public class MapLoader {
 	 * http://stackoverflow.com/questions/6524196/java-get-pixel-array-from-image
 	 * Gets image without using grb(x,y) method, which is said to be faster
 	 */
-	private static int[][] load(BufferedImage image) {
+	public static int[][] load(BufferedImage image) {
 		final byte[] pixels = ((DataBufferByte) image.getRaster()
 				.getDataBuffer()).getData();
 		final int width = image.getWidth();
