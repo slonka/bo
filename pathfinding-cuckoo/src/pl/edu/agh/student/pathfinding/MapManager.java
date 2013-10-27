@@ -30,6 +30,10 @@ public class MapManager {
 		return (color) & 0x000000FF;
 	}
 	
+	public static int getGrayscale(int color) {		
+		return getRed(color) + getGreen(color) + getBlue(color);
+	}
+	
 	/*
 	 * http://stackoverflow.com/questions/6524196/java-get-pixel-array-from-image
 	 * Gets image without using grb(x,y) method, which is said to be faster

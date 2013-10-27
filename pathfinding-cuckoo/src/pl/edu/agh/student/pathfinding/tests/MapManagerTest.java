@@ -27,9 +27,10 @@ public class MapManagerTest {
 
 	@Test
 	public void loadTest() {		
-		Assert.assertEquals("First pixel red not matching", 27, map.getRed(pixels[0][0]));
-		Assert.assertEquals("First pixel green not matching", 229, map.getGreen(pixels[0][0]));
-		Assert.assertEquals("First pixel blue not matching", 51, map.getBlue(pixels[0][0]));
+		Assert.assertEquals("First pixel red not matching", 27, MapManager.getRed(pixels[0][0]));
+		Assert.assertEquals("First pixel green not matching", 229, MapManager.getGreen(pixels[0][0]));
+		Assert.assertEquals("First pixel blue not matching", 51, MapManager.getBlue(pixels[0][0]));
+		Assert.assertEquals("First pixel grayscale not matching", 51 + 229 + 27, MapManager.getGrayscale(pixels[0][0]));
 	}
 
 }
