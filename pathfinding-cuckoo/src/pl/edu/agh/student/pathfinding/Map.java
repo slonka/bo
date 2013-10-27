@@ -6,6 +6,7 @@ import java.awt.image.DataBufferByte;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.SwingUtilities;
 
 public class Map {
 
@@ -17,6 +18,8 @@ public class Map {
 	private Point endPoint;
 	
 	private int[][] rawMap;
+	public BufferedImage img;
+	
 	public Point getStartPoint() {
 		return startPoint;
 	}
@@ -40,6 +43,10 @@ public class Map {
 			System.err.println(e.toString());
 			e.printStackTrace();
 		}
+	}
+	
+	public void display() {
+
 	}
 	
 	/*
@@ -105,13 +112,13 @@ public class Map {
 	 * Gets image without using grb(x,y) method, which is said to be faster
 	 */
 	private int[][] load(String mapPath) throws Exception {
-		BufferedImage image = ImageIO.read(getClass().getResource(mapPath));
+		img = ImageIO.read(getClass().getResource(mapPath));
 		
-		final byte[] pixels = ((DataBufferByte) image.getRaster()
+		final byte[] pixels = ((DataBufferByte) img.getRaster()
 				.getDataBuffer()).getData();
-		final int width = image.getWidth();
-		final int height = image.getHeight();
-		final boolean hasAlphaChannel = image.getAlphaRaster() != null;
+		final int width = img.getWidth();
+		final int height = img.getHeight();
+		final boolean hasAlphaChannel = img.getAlphaRaster() != null;
 		boolean hasStartingPoint = false, hasEndingPoint = false;;
 		
 
