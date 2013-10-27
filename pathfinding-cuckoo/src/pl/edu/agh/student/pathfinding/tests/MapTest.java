@@ -3,10 +3,6 @@ package pl.edu.agh.student.pathfinding.tests;
 import static org.junit.Assert.*;
 
 import java.awt.Point;
-import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-
-import javax.imageio.ImageIO;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,10 +26,10 @@ public class MapTest {
 
 	@Test
 	public void loadTest() {		
-		Assert.assertEquals("First pixel red not matching", 27, Map.getRed(map.getPixel(0, 0)));
-		Assert.assertEquals("First pixel green not matching", 229, Map.getGreen(map.getPixel(0, 0)));
-		Assert.assertEquals("First pixel blue not matching", 51, Map.getBlue(map.getPixel(0, 0)));
-		Assert.assertEquals("First pixel grayscale not matching", 51 + 229 + 27, Map.getGrayscale(map.getPixel(0, 0)));
+		Assert.assertEquals("First pixel red not matching", 0, Map.getRed(map.getPixel(0, 0)));
+		Assert.assertEquals("First pixel green not matching", 255, Map.getGreen(map.getPixel(0, 0)));
+		Assert.assertEquals("First pixel blue not matching", 0, Map.getBlue(map.getPixel(0, 0)));
+		Assert.assertEquals("First pixel grayscale not matching", 255, Map.getGrayscale(map.getPixel(0, 0)));
 	}
 	
 	@Test
