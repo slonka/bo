@@ -1,5 +1,6 @@
 package pl.edu.agh.student.pathfinding;
 
+import java.lang.reflect.Array;
 import java.util.Random;
 
 import pl.edu.agh.student.pathfinding.map.IMap;
@@ -53,7 +54,7 @@ public class CuckooSolver implements ISolver {
 				f[i] = fi;
 			}
 			
-			
+			//Array.
 			
 			// A fraction (pa) of the worse nests are abandoned and new ones are built;
 			

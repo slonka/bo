@@ -1,5 +1,8 @@
 package pl.edu.agh.student.pathfinding;
 
 public interface ISolutionModifier {
-	Solution modify(Solution solution);
+	/*
+	 * Modifies solution - must update f value;
+	 */
+	Solution modify(Solution solution); 
 }
