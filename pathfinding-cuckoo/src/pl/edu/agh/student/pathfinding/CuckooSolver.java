@@ -17,7 +17,7 @@ public class CuckooSolver implements ISolver {
 	@Override
 	public Solution solve(IMap m) {
 		for(int i=0; i<n; i++) {			
-			nest[i] = generator.getSolution(m.getStartingPoint(), m.getFinishPoint());
+			nest[i] = generator.getSolution();
 		}
 		
 		
