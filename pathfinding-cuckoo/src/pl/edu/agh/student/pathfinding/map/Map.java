@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
+@Deprecated
 public class Map {
 
 /*	private final int MAP_START_COLOR = 0x00FF0000; // red
