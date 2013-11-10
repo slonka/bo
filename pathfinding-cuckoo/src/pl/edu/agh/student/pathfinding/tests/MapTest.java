@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import pl.edu.agh.student.pathfinding.Map;
+import pl.edu.agh.student.pathfinding.map.Map;
 
 public class MapTest {
 

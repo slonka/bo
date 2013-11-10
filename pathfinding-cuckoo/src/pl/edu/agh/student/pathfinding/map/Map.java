@@ -1,4 +1,4 @@
-package pl.edu.agh.student.pathfinding;
+package pl.edu.agh.student.pathfinding.map;
 
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -64,7 +64,7 @@ public class Map {
 	}	
 	
 	public static int getGreen(int color) {
-		return (color >>8 ) & 0x000000FF;		
+		return (color >> 8 ) & 0x000000FF;		
 	}
 	
 	public static int getBlue(int color) {
