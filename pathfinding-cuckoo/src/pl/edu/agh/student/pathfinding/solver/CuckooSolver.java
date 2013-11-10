@@ -20,7 +20,7 @@ public class CuckooSolver implements ISolver {
 
 	public CuckooSolver(IPathGenerator generator,
 			ISolutionModifier solutionModifier, int population,
-			int maxGeneration, float pa) {
+			int maxGeneration, double pa) {
 		this.generator = generator;
 		this.n = population;
 		this.maxGeneration = maxGeneration;
@@ -52,7 +52,7 @@ public class CuckooSolver implements ISolver {
 			// performing random operations;
 			int i = r.nextInt(n);
 			Solution randomNest = nest[i];
-			randomNest = solutionModifier.modify(nest[i]);
+			//FIXME: randomNest = solutionModifier.modify(nest[i]);
 
 			// Evaluate its quality/fitness
 			int fi = randomNest.f();
