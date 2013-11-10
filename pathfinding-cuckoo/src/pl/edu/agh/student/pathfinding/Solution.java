@@ -15,7 +15,7 @@ public class Solution {
 		this.map = map;
 	}
 	
-	int f() {
+	public int f() {
 		int res = 0;
 		for(Point p : steps) {
 			res += map.getCost(p);
