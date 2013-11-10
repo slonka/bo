@@ -9,7 +9,7 @@ import pl.edu.agh.student.pathfinding.map.IMap;
 
 public class SolutionImageBuilder {
 	
-	private static int PATH_COLOR = 0x00FF0000;
+	private static int PATH_COLOR = 0xFFFF0000;
 	
 	public static Image generateImage(Solution solution) {
 		IMap map = solution.getMap();		
