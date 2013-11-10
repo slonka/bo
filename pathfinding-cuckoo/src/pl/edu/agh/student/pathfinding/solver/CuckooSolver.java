@@ -27,6 +27,7 @@ public class CuckooSolver implements ISolver {
 		this.solutionModifier = solutionModifier;
 		nest = new Solution[n];
 		toAbandon = (int) (pa * n);
+		f = new int[n];
 	}
 	
 	private void sort() {
