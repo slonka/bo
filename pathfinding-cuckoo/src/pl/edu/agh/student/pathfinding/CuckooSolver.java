@@ -7,6 +7,7 @@ public class CuckooSolver implements ISolver {
 	private int n;
 	private Solution nest[];
 	
+	
 	public CuckooSolver(int population, IPathGenerator generator) {		
 		this.generator = generator;
 		this.n = population;
@@ -15,8 +16,10 @@ public class CuckooSolver implements ISolver {
 	}
 
 	@Override
-	public Solution solve(IMap m) {
-		for(int i=0; i<n; i++) {			
+	public Solution solve() {
+		
+		// Generate an initial population of  n  host nests
+		for(int i=0; i<n; i++) {
 			nest[i] = generator.getSolution();
 		}
 		

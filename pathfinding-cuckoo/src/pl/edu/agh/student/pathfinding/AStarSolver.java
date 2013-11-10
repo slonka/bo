@@ -5,7 +5,7 @@ import pl.edu.agh.student.pathfinding.map.IMap;
 public class AStarSolver implements ISolver {
 
 	@Override
-	public Solution solve(IMap m) {
+	public Solution solve() {
 		
 		return null;
 	}
