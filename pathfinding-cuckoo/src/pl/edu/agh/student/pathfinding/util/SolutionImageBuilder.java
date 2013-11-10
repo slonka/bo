@@ -12,8 +12,7 @@ public class SolutionImageBuilder {
 	private static int PATH_COLOR = 0x00FF0000;
 	
 	public static Image generateImage(Solution solution) {
-		IMap map = solution.getMap();
-		
+		IMap map = solution.getMap();		
 		BufferedImage image = map.getMapImage();
 		
 		for(Point p : solution.getSteps()) {
