@@ -1,15 +1,20 @@
 package pl.edu.agh.student.pathfinding.gui;
 
+import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
+
+import javax.imageio.ImageIO;
 
 import pl.edu.agh.student.pathfinding.gui.exception.InvalidAlgorithmParameterValueException;
 
 public class AlgorithmData extends Observable {
 
 	private File mapFile;
+	private Image image;
 	private Map<String, String> parameters = new HashMap<String, String>();
 
 	public static String DYING_PROBABLITY = "dying";
@@ -22,8 +27,11 @@ public class AlgorithmData extends Observable {
 
 	public void setMapFile(File mapFile) {
 		this.mapFile = mapFile;
-		setChanged();
-		notifyObservers(mapFile);
+		try {
+			setMap(ImageIO.read(mapFile));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void addParameter(String name, String value) {
@@ -91,5 +99,12 @@ public class AlgorithmData extends Observable {
 		}
 		return dying;
 	}
+
+	public void setMap(Image generateImage) {
+		image = generateImage;
+		setChanged();
+		notifyObservers(image);
+	}
+	
 
 }

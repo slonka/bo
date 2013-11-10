@@ -1,6 +1,7 @@
 package pl.edu.agh.student.pathfinding.map;
 
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 
 public class FakeMap implements IMap {
 	public Point startingPoint, finishPoint;
@@ -40,6 +41,12 @@ public class FakeMap implements IMap {
 	@Override
 	public int getCost(Point point) {
 		return realMap.getCost(point);
+	}
+
+	@Override
+	public BufferedImage getMapImage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

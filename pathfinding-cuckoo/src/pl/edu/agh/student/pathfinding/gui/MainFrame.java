@@ -90,14 +90,8 @@ public class MainFrame extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		File imageFile = (File) arg;
-		Image image;
-		try {
-			image = ImageIO.read(imageFile);
-			this.mainMapPanel.setImage(image);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Image image = (Image) arg;
+		this.mainMapPanel.setImage(image);
 		repaint();
 	}
 

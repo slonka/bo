@@ -25,6 +25,7 @@ public class ImagePanel extends JPanel {
 	
 	public void setImage(Image image) {
 		img = image;
+		img = img.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
 	}
 	
 	public void paintComponent(Graphics g) {
