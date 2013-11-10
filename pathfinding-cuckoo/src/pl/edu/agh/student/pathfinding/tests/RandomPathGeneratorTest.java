@@ -21,8 +21,10 @@ public class RandomPathGeneratorTest{
 	}
 
 	@Test
-	public void getSolutionTest() {
+	public void getSolutionTest() throws IOException {
 		Assert.assertTrue(generator.getSolution().getSteps().size() != 0);
+		generator = new RandomPathGenerator(new BitmapMap(new File("maps/RandomPathGeneratorTest/PrzejsciaNiMa.png")));
+		Assert.assertTrue(generator.getSolution().getSteps().size() == 0);
 	}
 
 }

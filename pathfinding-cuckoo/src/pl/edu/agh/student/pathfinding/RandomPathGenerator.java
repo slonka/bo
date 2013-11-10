@@ -15,15 +15,15 @@ public class RandomPathGenerator implements IPathGenerator{
 	public RandomPathGenerator(IMap map){
 		this.map = map;
 		visitationTable = new boolean[map.getWidth()][map.getHeight()];
+	}
+
+	@Override
+	public Solution getSolution() {
 		for(boolean[] verse : visitationTable){
 			for(boolean visitation : verse){
 				visitation = false;
 			}
 		}
-	}
-
-	@Override
-	public Solution getSolution() {
 		Solution newSolution = new Solution(map);
 		Point current = map.getStartingPoint();
 		newSolution.addStep(current);
