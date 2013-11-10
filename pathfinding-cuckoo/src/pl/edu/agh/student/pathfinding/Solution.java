@@ -8,6 +8,8 @@ import pl.edu.agh.student.pathfinding.map.*;
 
 public class Solution {
 	List<Point> steps = new ArrayList<Point>();
+	
+	
 	IMap map;
 	
 	public Solution(IMap map) {
