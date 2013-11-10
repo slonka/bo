@@ -49,7 +49,7 @@ public class BitmapMapTest {
 	@Test
 	public void pointCostTest() throws IOException {
 		BitmapMap map = new BitmapMap(new File("maps/BitmapMapTest/accesibility_test.png"));
-		assertEquals("Got wrong cost!", 150, map.getCost(new Point(13, 15)));
+		assertEquals("Got wrong cost!", 205*3, map.getCost(new Point(13, 15)));
 	}
 	
 }
