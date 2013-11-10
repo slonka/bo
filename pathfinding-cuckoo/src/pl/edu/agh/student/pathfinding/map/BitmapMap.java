@@ -17,9 +17,10 @@ public class BitmapMap implements IMap {
 	private int[][] costsTable;
 	private Point start;
 	private Point finish;
+	private BufferedImage image;
 	
 	public BitmapMap(File bitmap) throws IOException {
-		BufferedImage image = ImageIO.read(bitmap);
+		image = ImageIO.read(bitmap);
 		parseBitmap(image);
 		validateBitmap();
 	}
@@ -85,6 +86,11 @@ public class BitmapMap implements IMap {
 	@Override
 	public int getCost(Point point) {
 		return costsTable[point.x][point.y];
+	}
+
+	@Override
+	public BufferedImage getMapImage() {
+		return image;
 	}
 
 }
