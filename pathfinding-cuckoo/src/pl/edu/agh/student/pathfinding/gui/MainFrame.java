@@ -1,21 +1,25 @@
 package pl.edu.agh.student.pathfinding.gui;
 
 import java.awt.Dimension;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
+import java.util.Observable;
+import java.util.Observer;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import org.jdesktop.layout.GroupLayout;
 
 import pl.edu.agh.student.pathfinding.gui.panels.BottomPanel;
 import pl.edu.agh.student.pathfinding.gui.panels.ImagePanel;
 
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends JFrame implements Observer {
 
-	private BufferedImage image;
 	private ImagePanel mainMapPanel;
-	private JPanel leftPanel;
+	private JPanel rightPanel;
 	private BottomPanel bottomPanel;
+	private AlgorithmData algorithmData;
 
 	public MainFrame() {
 		initComponents();
@@ -23,19 +27,20 @@ public class MainFrame extends javax.swing.JFrame {
 
 	private void initComponents() {
 
-		mainMapPanel = new ImagePanel();
-		leftPanel = new JPanel();
-		bottomPanel = new BottomPanel(this);
+		algorithmData = new AlgorithmData();
+		algorithmData.addObserver(this);
 		
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setTitle("MainFrame");
+		getAccessibleContext().setAccessibleName("Cuckoo - Pathfinding");
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setTitle("Cuckoo - Pathfinding");
 		setPreferredSize(new Dimension(800, 600));
-
-		initLeftPanel();
+		
+		mainMapPanel = new ImagePanel(580, 470);
+		rightPanel = new JPanel();
+		initRightPanel(190, 470);
+		bottomPanel = new BottomPanel(this);
+	
 		buildFrameView();
-
-		getAccessibleContext().setAccessibleName("MainFrame");
-
 		pack();
 	}
 
@@ -53,13 +58,13 @@ public class MainFrame extends javax.swing.JFrame {
 										.add(mainMapPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 												GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-										.add(leftPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+										.add(rightPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE))).addContainerGap()));
 		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.LEADING).add(
 				layout.createSequentialGroup()
 						.addContainerGap()
 						.add(layout.createParallelGroup(GroupLayout.LEADING)
-								.add(leftPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								.add(rightPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)
 								.add(mainMapPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE))
@@ -69,25 +74,24 @@ public class MainFrame extends javax.swing.JFrame {
 								GroupLayout.PREFERRED_SIZE).addContainerGap()));
 	}
 
-	private void initLeftPanel() {
-		GroupLayout jPanel2Layout = new GroupLayout(leftPanel);
-		leftPanel.setLayout(jPanel2Layout);
-		jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(GroupLayout.LEADING).add(0, 190,
+	private void initRightPanel(int width, int height) {
+		GroupLayout jPanel2Layout = new GroupLayout(rightPanel);
+		rightPanel.setLayout(jPanel2Layout);
+		jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(GroupLayout.LEADING).add(0, width,
 				Short.MAX_VALUE));
-		jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(GroupLayout.LEADING).add(0, 470,
+		jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(GroupLayout.LEADING).add(0, height,
 				Short.MAX_VALUE));
 	}
 
-
-	private void reloadMapImage() {
-		mainMapPanel.setImage(image);
-		mainMapPanel.repaint();
+	@Override
+	public void update(Observable o, Object arg) {
+		Image img = (Image) arg;
+		this.mainMapPanel.setImage(img);
+		repaint();
 	}
-	
-	
-	public void displayMap(BufferedImage image) {
-		this.image = image;
-		reloadMapImage();
+
+	public AlgorithmData getAlgorithmData() {
+		return algorithmData;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package pl.edu.agh.student.pathfinding.gui.panels;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,20 +53,15 @@ public class BottomPanel extends JPanel {
 		buttonsPanel.add(loadButton);
 		buttonsPanel.add(runAlgorithmButton);
 
-		buttonsPanel.add(new JButton("nic nie robiê"));
-		buttonsPanel.add(new JButton("ja te¿"));
+		buttonsPanel.add(new JButton("nic nie robie"));
+		buttonsPanel.add(new JButton("ja tez"));
 
 		parameterTextFieldsPanel = new JPanel();
-		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.setColumns(4);
-		gridLayout2.setRows(2);
-		gridLayout2.setHgap(1);
-		gridLayout2.setVgap(1);
+		BorderLayout gridLayout2 = new BorderLayout();
 		parameterTextFieldsPanel.setLayout(gridLayout2);
-		addParameterFieldToPanel(parameterTextFieldsPanel, "     parametr 1:");
-		addParameterFieldToPanel(parameterTextFieldsPanel, "     parametr 2:");
-		addParameterFieldToPanel(parameterTextFieldsPanel, "     parametr 3:");
-		addParameterFieldToPanel(parameterTextFieldsPanel, "     parametr 4:");
+		addParameterFieldToPanel(parameterTextFieldsPanel, "     Initial Nests (n):");
+		addParameterFieldToPanel(parameterTextFieldsPanel, "     Dying Probability (Pa):");
+		addParameterFieldToPanel(parameterTextFieldsPanel, "     Max Generation: (MG)");
 
 		add(buttonsPanel);
 		add(parameterTextFieldsPanel);
@@ -78,13 +74,13 @@ public class BottomPanel extends JPanel {
 		for (JTextField t : parameters)
 			map.put(t.getName(), Double.parseDouble(t.getText()));
 		
-		runAlgorithmButton.addActionListener(new RunAlgorithmActionListener());
+		runAlgorithmButton.addActionListener(new RunAlgorithmActionListener(mainFrame.getAlgorithmData()));
 	}
 
 	private void addParameterFieldToPanel(JPanel parameterTextFields, String string) {
 		JLabel jLabel = new JLabel(string);
 		jLabel.setAlignmentX(LEFT_ALIGNMENT);
-		parameterTextFields.add(jLabel);
+		parameterTextFields.add(jLabel, BorderLayout.AFTER_LAST_LINE);
 		JTextField textField = new JTextField();
 		textField.setName(string);
 		parameters.add(textField);
@@ -124,7 +120,7 @@ public class BottomPanel extends JPanel {
 					File file = fc.getSelectedFile();
 					try {
 						BufferedImage image = ImageIO.read(file);
-						mainFrame.displayMap(image);
+						mainFrame.getAlgorithmData().setMap(image);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
