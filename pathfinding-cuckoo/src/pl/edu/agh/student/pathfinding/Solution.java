@@ -9,18 +9,18 @@ import pl.edu.agh.student.pathfinding.map.*;
 public class Solution {
 	private List<Point> steps = new ArrayList<Point>();
 	private IMap map;
+	public int f = -1;
 	
 	public Solution(IMap map) {
 		this.map = map;
 	}
 	
-	
-	int f() {
+	public int f() {
 		int res = 0;
 		for(Point p : steps) {
 			res += map.getCost(p);
 		}
-		
+		f=res;
 		return res;
 	}
 	
