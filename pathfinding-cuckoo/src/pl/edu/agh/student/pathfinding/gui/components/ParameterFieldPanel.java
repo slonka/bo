@@ -1,13 +1,13 @@
 package pl.edu.agh.student.pathfinding.gui.components;
 
 import java.awt.GridLayout;
-import java.util.Observer;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import pl.edu.agh.student.pathfinding.gui.AlgorithmData;
+import pl.edu.agh.student.pathfinding.gui.listeners.*;
 
 public class ParameterFieldPanel extends JPanel  {
 
