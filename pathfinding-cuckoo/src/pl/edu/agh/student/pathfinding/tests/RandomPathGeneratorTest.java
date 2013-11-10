@@ -17,7 +17,7 @@ public class RandomPathGeneratorTest{
 
 	@Before
 	public void setUp() throws Exception {
-		generator = new RandomPathGenerator(new BitmapMap(new File("maps/RandomPathGeneratorTest/testRPG.png")));
+		generator = new RandomPathGenerator(new BitmapMap(new File("maps/RandomPathGeneratorTest/RozjebutTest.png")));
 	}
 
 	@Test
