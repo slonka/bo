@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import pl.edu.agh.student.pathfinding.map.*;
 
 public class Solution {
-	List<Point> steps = new ArrayList<Point>();
-	IMap map;
+	private List<Point> steps = new ArrayList<Point>();
+	private IMap map;
 	
 	public Solution(IMap map) {
 		this.map = map;
@@ -22,5 +22,21 @@ public class Solution {
 		}
 		
 		return res;
+	}
+	
+	public void addStep(Point step){
+		this.steps.add(step);
+	}
+	
+	public void removeStep(Point step){
+		this.steps.remove(step);
+	}
+	
+	public boolean wasVisited(Point step){
+		return this.steps.contains(step);
+	}
+	
+	public Point getLast(){
+		return this.steps.get(this.steps.size() - 1);
 	}
 }

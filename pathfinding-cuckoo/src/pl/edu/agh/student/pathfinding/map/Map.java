@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
-public class Map {
+public class Map{
 
 /*	private final int MAP_START_COLOR = 0x00FF0000; // red
 	private final int MAP_END_COLOR = 0x0000FF00; // green
