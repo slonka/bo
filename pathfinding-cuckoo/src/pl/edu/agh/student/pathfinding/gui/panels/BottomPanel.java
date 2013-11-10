@@ -72,13 +72,13 @@ public class BottomPanel extends JPanel {
 	}
 
 	private void createRunAlgorithmButton() {
-		JButton run = new JButton("Run algorithm");
+		runAlgorithmButton = new JButton("Run algorithm");
 
 		Map<String, Double> map = new HashMap<String, Double>();
 		for (JTextField t : parameters)
 			map.put(t.getName(), Double.parseDouble(t.getText()));
 		
-		run.addActionListener(new RunAlgorithmActionListener());
+		runAlgorithmButton.addActionListener(new RunAlgorithmActionListener());
 	}
 
 	private void addParameterFieldToPanel(JPanel parameterTextFields, String string) {
