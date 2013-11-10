@@ -38,7 +38,7 @@ public class RandomPathGenerator implements IPathGenerator{
 				newSolution.addStep(current);
 			}
 		}
-		print(newSolution);
+	//	print(newSolution);
 		return newSolution;
 	}
 	
