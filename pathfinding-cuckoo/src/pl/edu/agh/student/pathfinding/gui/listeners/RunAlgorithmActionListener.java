@@ -3,11 +3,13 @@ package pl.edu.agh.student.pathfinding.gui.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
-import javax.swing.JOptionPane;
-
+import pl.edu.agh.student.pathfinding.RandomPathGenerator;
 import pl.edu.agh.student.pathfinding.gui.AlgorithmData;
-import pl.edu.agh.student.pathfinding.gui.exception.InvalidAlgorithmParameterValueException;
+import pl.edu.agh.student.pathfinding.map.BitmapMap;
+import pl.edu.agh.student.pathfinding.map.IMap;
+import pl.edu.agh.student.pathfinding.util.SolutionImageBuilder;
 
 public class RunAlgorithmActionListener implements ActionListener {
 
@@ -20,11 +22,16 @@ public class RunAlgorithmActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		File mapFile = data.getMapFile();
+		IMap map = null;
 		try {
-			System.out.println(data.getCuckooDyingProbability() + "\n"+data.getInitialNestAmount()+"\n"+data.getMaxGeneration());
-		} catch (InvalidAlgorithmParameterValueException e) {
-			JOptionPane.showMessageDialog(null, "Error: "+e.getMessage()+"   ", "Algorithm info", JOptionPane.ERROR_MESSAGE);
+			map = new BitmapMap(mapFile);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+
+		RandomPathGenerator randomPathGenerator = new RandomPathGenerator(map);
+	
+		data.setMap(SolutionImageBuilder.generateImage(	randomPathGenerator.getSolution()));
 	}
 
 }
