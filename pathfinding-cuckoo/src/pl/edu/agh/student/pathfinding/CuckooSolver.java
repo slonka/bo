@@ -1,11 +1,33 @@
 package pl.edu.agh.student.pathfinding;
 
-public class CuckooSolver {
+import pl.edu.agh.student.pathfinding.map.IMap;
 
+public class CuckooSolver implements ISolver {
+	private IPathGenerator generator;
+	private int n;
+	private Solution nest[];
+	
+	public CuckooSolver(int population, IPathGenerator generator) {		
+		this.generator = generator;
+		this.n = population;
+		
+		nest = new Solution[population];
+	}
+
+	@Override
+	public Solution solve(IMap m) {
+		for(int i=0; i<n; i++) {			
+			nest[i] = generator.getSolution();
+		}
+		
+		
+		return null;
+	}
+	
 	/*
 	http://en.wikipedia.org/wiki/Cuckoo_search
 	 	Objective function: f(\mathbf{x}), \quad \mathbf{x}=(x_1,x_2,\dots,x_d); \, 
-		Generate an initial population of  n  host nests; 
+		 
 		While (t<MaxGeneration) or (stop criterion)
 		   Get a cuckoo randomly (say, i) and replace its solution by performing Lévy flights;
 		   Evaluate its quality/fitness F_i 
@@ -20,5 +42,6 @@ public class CuckooSolver {
 		   Pass the current best solutions to the next generation;
 		end while
 	*/
+	
 	
 }
