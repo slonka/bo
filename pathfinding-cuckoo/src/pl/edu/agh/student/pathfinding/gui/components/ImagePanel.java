@@ -1,4 +1,4 @@
-package pl.edu.agh.student.pathfinding.gui.panels;
+package pl.edu.agh.student.pathfinding.gui.components;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -15,13 +15,12 @@ public class ImagePanel extends JPanel {
 	private static final long serialVersionUID = 4187065896799463284L;
 
 	public ImagePanel(int width, int height) {
-		setBorder(BorderFactory.createEtchedBorder());
-		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
 		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.LEADING).add(0, width, Short.MAX_VALUE));
 		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.LEADING).add(0, height, Short.MAX_VALUE));
 		
+		setBorder(BorderFactory.createEtchedBorder());
 	}
 	
 	public void setImage(Image image) {

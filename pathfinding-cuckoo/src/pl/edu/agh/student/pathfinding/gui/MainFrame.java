@@ -2,20 +2,25 @@ package pl.edu.agh.student.pathfinding.gui;
 
 import java.awt.Dimension;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import org.jdesktop.layout.GroupLayout;
 
-import pl.edu.agh.student.pathfinding.gui.panels.BottomPanel;
-import pl.edu.agh.student.pathfinding.gui.panels.ImagePanel;
+import pl.edu.agh.student.pathfinding.gui.components.BottomPanel;
+import pl.edu.agh.student.pathfinding.gui.components.ImagePanel;
 
 public class MainFrame extends JFrame implements Observer {
 
+	private static final long serialVersionUID = -2255435257331955721L;
+	
 	private ImagePanel mainMapPanel;
 	private JPanel rightPanel;
 	private BottomPanel bottomPanel;
@@ -33,7 +38,7 @@ public class MainFrame extends JFrame implements Observer {
 		getAccessibleContext().setAccessibleName("Cuckoo - Pathfinding");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Cuckoo - Pathfinding");
-		setPreferredSize(new Dimension(800, 600));
+		setPreferredSize(new Dimension(800, 620));
 		
 		mainMapPanel = new ImagePanel(580, 470);
 		rightPanel = new JPanel();
@@ -85,8 +90,14 @@ public class MainFrame extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		Image img = (Image) arg;
-		this.mainMapPanel.setImage(img);
+		File imageFile = (File) arg;
+		Image image;
+		try {
+			image = ImageIO.read(imageFile);
+			this.mainMapPanel.setImage(image);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		repaint();
 	}
 
