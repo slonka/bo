@@ -1,6 +1,7 @@
 package pl.edu.agh.student.pathfinding.map;
 
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 
 public interface IMap {
 	
@@ -15,5 +16,7 @@ public interface IMap {
 	boolean isAccessible(Point point);
 	
 	int getCost(Point point);
+	
+	BufferedImage getMapImage();
 	
 }
