@@ -39,4 +39,8 @@ public class Solution {
 	public Point getLast(){
 		return this.steps.get(this.steps.size() - 1);
 	}
+	
+	public List<Point> getSteps(){
+		return this.steps;
+	}
 }

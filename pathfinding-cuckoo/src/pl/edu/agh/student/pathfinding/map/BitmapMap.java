@@ -51,9 +51,9 @@ public class BitmapMap implements IMap {
 	}
 
 	private int getCost(int rgb) {
-		int red = (rgb >> 16) & 0x000000FF;
-		int green = (rgb >> 8 ) & 0x000000FF;
-		int blue = (rgb) & 0x000000FF;
+		int red = 255 - ((rgb >> 16) & 0x000000FF);
+		int green = 255 - ((rgb >> 8 ) & 0x000000FF);
+		int blue = 255 - ((rgb) & 0x000000FF);
 		return red + green + blue;
 	}
 
@@ -79,7 +79,7 @@ public class BitmapMap implements IMap {
 
 	@Override
 	public boolean isAccessible(Point point) {
-		return getCost(point) != 0;
+		return getCost(point) < 255 + 255 + 255;
 	}
 
 	@Override

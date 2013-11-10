@@ -28,6 +28,7 @@ public class RandomPathGenerator implements IPathGenerator{
 		newSolution.addStep(current);
 		visitationTable[current.x][current.y] = true;
 		while(current != map.getFinishPoint()){
+			System.out.println(current.x + " " + current.y);
 			if(!canGoAnywhere(current)){
 				newSolution.removeStep(current);
 				current = newSolution.getLast();
@@ -83,14 +84,15 @@ public class RandomPathGenerator implements IPathGenerator{
 	}
 	
 	private boolean canGoAnywhere (Point currentPoint){
-		return !((visitationTable[currentPoint.x - 1][currentPoint.y - 1] || !map.isAccessible(new Point(currentPoint.x - 1, currentPoint.y - 1))) &&
-				(visitationTable[currentPoint.x - 1][currentPoint.y] || !map.isAccessible(new Point(currentPoint.x - 1, currentPoint.y))) &&
-				(visitationTable[currentPoint.x - 1][currentPoint.y + 1] || !map.isAccessible(new Point(currentPoint.x - 1, currentPoint.y + 1))) &&
-				(visitationTable[currentPoint.x][currentPoint.y - 1] || !map.isAccessible(new Point(currentPoint.x, currentPoint.y - 1))) &&
-				(visitationTable[currentPoint.x][currentPoint.y + 1] || !map.isAccessible(new Point(currentPoint.x, currentPoint.y + 1))) &&
-				(visitationTable[currentPoint.x + 1][currentPoint.y - 1] || !map.isAccessible(new Point(currentPoint.x + 1, currentPoint.y - 1))) &&
-				(visitationTable[currentPoint.x + 1][currentPoint.y] || !map.isAccessible(new Point(currentPoint.x + 1, currentPoint.y))) &&
-				(visitationTable[currentPoint.x + 1][currentPoint.y + 1] || !map.isAccessible(new Point(currentPoint.x + 1, currentPoint.y + 1))));
+		return !((currentPoint.x > 0 && currentPoint.y > 0 ? (visitationTable[currentPoint.x - 1][currentPoint.y - 1] || !map.isAccessible(new Point(currentPoint.x - 1, currentPoint.y - 1))) : true) &&
+				 (currentPoint.x > 0 ? (visitationTable[currentPoint.x - 1][currentPoint.y] || !map.isAccessible(new Point(currentPoint.x - 1, currentPoint.y))) : true) &&
+				 (currentPoint.x > 0 && currentPoint.y < map.getHeight()-1 ? (visitationTable[currentPoint.x - 1][currentPoint.y + 1] || !map.isAccessible(new Point(currentPoint.x - 1, currentPoint.y + 1))) : true) &&
+				 (currentPoint.y > 0 ? (visitationTable[currentPoint.x][currentPoint.y - 1] || !map.isAccessible(new Point(currentPoint.x, currentPoint.y - 1))) : true) &&
+				 (currentPoint.y < map.getHeight()-1 ? (visitationTable[currentPoint.x][currentPoint.y + 1] || !map.isAccessible(new Point(currentPoint.x, currentPoint.y + 1))) : true) &&
+				 (currentPoint.x < map.getWidth()-1 && currentPoint.y > 0 ? (visitationTable[currentPoint.x + 1][currentPoint.y - 1] || !map.isAccessible(new Point(currentPoint.x + 1, currentPoint.y - 1))) : true) &&
+				 (currentPoint.x < map.getWidth()-1 ? (visitationTable[currentPoint.x + 1][currentPoint.y] || !map.isAccessible(new Point(currentPoint.x + 1, currentPoint.y))) : true) &&
+				 (currentPoint.x < map.getWidth()-1 && currentPoint.y < map.getHeight()-1 ? (visitationTable[currentPoint.x + 1][currentPoint.y + 1] || !map.isAccessible(new Point(currentPoint.x + 1, currentPoint.y + 1))) : true)
+				);
 	}
 
 }
