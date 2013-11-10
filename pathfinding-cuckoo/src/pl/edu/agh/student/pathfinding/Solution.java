@@ -43,4 +43,8 @@ public class Solution {
 	public List<Point> getSteps(){
 		return this.steps;
 	}
+	
+	public IMap getMap() {
+		return map;
+	}
 }
