@@ -99,7 +99,7 @@ public class RandomPathGenerator implements IPathGenerator{
 	
 	private void print(Solution newSolution){
 		List<Point> lista = newSolution.getSteps();
-		char[][] tablica = new char[10][10];
+		char[][] tablica = new char[map.getWidth()][map.getHeight()];
 		for(char[] wiersz : tablica){
 			for(char znak : wiersz){
 				znak = '*';
