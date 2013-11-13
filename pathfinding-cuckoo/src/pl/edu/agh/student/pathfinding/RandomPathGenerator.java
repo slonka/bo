@@ -1,6 +1,7 @@
 package pl.edu.agh.student.pathfinding;
 
 import java.awt.Point;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -24,6 +25,10 @@ public class RandomPathGenerator implements IPathGenerator{
 
 	@Override
 	public Solution getSolution() {
+		for (boolean[] line : visitationTable) {
+            Arrays.fill(line, false);
+        }
+		
 		Solution newSolution = new Solution(map);
 		Point current = map.getStartingPoint();
 		newSolution.addStep(current);
