@@ -18,11 +18,6 @@ public class RandomPathGenerator implements IPathGenerator{
 	public RandomPathGenerator(IMap map){
 		this.map = map;
 		visitationTable = new boolean[map.getWidth()][map.getHeight()];
-		for(boolean[] verse : visitationTable){
-			for(boolean visitation : verse){
-				visitation = false;
-			}
-		}
 	}
 
 	@Override
