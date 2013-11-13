@@ -40,9 +40,9 @@ public class BottomPanel extends JPanel {
 		
 		// parameters
 		parametersPanel.setLayout(new BoxLayout(parametersPanel, BoxLayout.Y_AXIS));
-		parametersPanel.add(new ParameterFieldPanel("Initial Nests (n):", AlgorithmData.NESTS, parentMainFrame.getAlgorithmData()));
-		parametersPanel.add(new ParameterFieldPanel("Dying Probability (Pa):", AlgorithmData.DYING_PROBABLITY, parentMainFrame.getAlgorithmData()));
-		parametersPanel.add(new ParameterFieldPanel("Max Generation: (MG)", AlgorithmData.MAX_GENERATION, parentMainFrame.getAlgorithmData()));
+		parametersPanel.add(new ParameterFieldPanel("Initial Nests (n):", AlgorithmData.NESTS, parentMainFrame.getAlgorithmData(), "10"));
+		parametersPanel.add(new ParameterFieldPanel("Dying Probability (Pa):", AlgorithmData.DYING_PROBABLITY, parentMainFrame.getAlgorithmData(), "0.5"));
+		parametersPanel.add(new ParameterFieldPanel("Max Generation: (MG)", AlgorithmData.MAX_GENERATION, parentMainFrame.getAlgorithmData(), "20"));
 
 		add(buttonsPanel);
 		add(parametersPanel);

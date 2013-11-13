@@ -19,17 +19,19 @@ public class ParameterFieldPanel extends JPanel  {
 
 	private AlgorithmData algorithmData;
 	
-	public ParameterFieldPanel(String labelText, String name, AlgorithmData data) {
+	public ParameterFieldPanel(String labelText, String name, AlgorithmData data, String initialValue) {
 		this.algorithmData = data;
-		initComponents(labelText, name);
+		initComponents(labelText, name, initialValue);
 		setLayout(new GridLayout(1,2));
 		this.add(label);
 		this.add(getTextField());
+
+		algorithmData.addParameter(name, initialValue);
 	}
 
-	private void initComponents(String labelText, String name) {
+	private void initComponents(String labelText, String name, String initialValue) {
 		this.label = new JLabel(labelText);
-		this.setTextField(new JTextField());
+		this.setTextField(new JTextField(initialValue));
 		getTextField().setName(name);
 		getTextField().addFocusListener(new ParameterFieldFocusListener(getTextField(), algorithmData));
 	}

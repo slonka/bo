@@ -38,9 +38,7 @@ public class RunAlgorithmActionListener implements ActionListener {
 
 		RandomPathGenerator randomPathGenerator = new RandomPathGenerator(map);
 	
-		
-
-		
+				
 		int maxGeneration = 10;
 		int nests = 10;
 		double pa = 0.5;

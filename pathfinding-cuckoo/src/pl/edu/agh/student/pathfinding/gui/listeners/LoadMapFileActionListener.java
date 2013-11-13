@@ -21,6 +21,9 @@ public final class LoadMapFileActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent action) {
 		JFileChooser fileChooser = new JFileChooser();
+		File dir = new File("maps");
+		String property = System.getProperty("user.dir");
+		fileChooser.setCurrentDirectory(dir);
 		FileFilter fileFilter = new FileFilter() {
 			private final String[] okFileExtensions = new String[] { "jpg", "png", "gif", "bmp" };
 
@@ -31,6 +34,9 @@ public final class LoadMapFileActionListener implements ActionListener {
 
 			@Override
 			public boolean accept(File file) {
+				if (file.isDirectory())
+					return true;
+				
 				for (String extension : okFileExtensions) {
 					if (file.getName().toLowerCase().endsWith(extension)) {
 						return true;
