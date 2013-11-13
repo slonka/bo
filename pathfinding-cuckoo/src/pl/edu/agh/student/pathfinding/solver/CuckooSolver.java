@@ -69,13 +69,12 @@ public class CuckooSolver implements ISolver {
 
 			sort();
 			// A fraction (pa) of the worse nests are abandoned and new ones are built;
-			for(i = toAbandon; i<n; i++) {
+			for(i = n-toAbandon; i<n; i++) {
 				nest[i] = generator.getSolution();
 			}
 			
 			// Rank the solutions/nests and find the current best;
 			sort();
-
 		}
 
 		return nest[0];

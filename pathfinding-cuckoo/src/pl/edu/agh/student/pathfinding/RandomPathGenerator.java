@@ -39,6 +39,9 @@ public class RandomPathGenerator implements IPathGenerator{
 			}
 		}
 	//	print(newSolution);
+		
+		// calculate f
+		newSolution.f();
 		return newSolution;
 	}
 	
