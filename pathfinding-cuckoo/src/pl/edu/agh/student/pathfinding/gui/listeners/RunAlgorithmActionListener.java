@@ -14,6 +14,8 @@ import pl.edu.agh.student.pathfinding.gui.exception.InvalidAlgorithmParameterVal
 import pl.edu.agh.student.pathfinding.map.BitmapMap;
 import pl.edu.agh.student.pathfinding.map.IMap;
 import pl.edu.agh.student.pathfinding.solver.CuckooSolver;
+import pl.edu.agh.student.pathfinding.solver.DijkstraSolver;
+import pl.edu.agh.student.pathfinding.solver.ISolver;
 import pl.edu.agh.student.pathfinding.util.SolutionImageBuilder;
 
 public class RunAlgorithmActionListener implements ActionListener {
@@ -50,9 +52,18 @@ public class RunAlgorithmActionListener implements ActionListener {
 			e.printStackTrace();
 			return;
 		}
+		
 		CuckooSolver solver = new CuckooSolver(randomPathGenerator, (ISolutionModifier)null, nests, maxGeneration , pa);
+		DijkstraSolver dijkstraSolver = new DijkstraSolver(map);
+		
 		Solution solution = solver.solve();
-		Image generateImage = SolutionImageBuilder.generateImage(solution);
+		Solution dijkstraSolution = dijkstraSolver.solve();
+		
+		SolutionImageBuilder builder = new SolutionImageBuilder();
+		builder.addSolution(solution, 0xFFFF0000);
+		builder.addSolution(dijkstraSolution, 0xFF00FF00);
+		Image generateImage = builder.build();
+		//generateImage = SolutionImageBuilder.generateImage(solution, trackColor)
 		data.setMap(generateImage);
 	}
 
