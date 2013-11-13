@@ -20,7 +20,7 @@ public class Solution {
 		for(Point p : steps) {
 			res += map.getCost(p);
 		}
-		f=res;
+		this.f=res;
 		return res;
 	}
 	

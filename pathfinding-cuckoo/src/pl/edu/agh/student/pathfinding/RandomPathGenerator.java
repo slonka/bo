@@ -13,6 +13,8 @@ public class RandomPathGenerator implements IPathGenerator{
 	
 	private boolean[][] visitationTable;
 	
+	private Random rand = new Random();
+	
 	public RandomPathGenerator(IMap map){
 		this.map = map;
 		visitationTable = new boolean[map.getWidth()][map.getHeight()];
@@ -25,6 +27,7 @@ public class RandomPathGenerator implements IPathGenerator{
 
 	@Override
 	public Solution getSolution() {
+		rand = new Random();
 		for (boolean[] line : visitationTable) {
             Arrays.fill(line, false);
         }
@@ -52,7 +55,7 @@ public class RandomPathGenerator implements IPathGenerator{
 	
 	private Point nextStep(Point currentStep){
 		Point nextStep = null;
-		Random rand = new Random();
+		
 		boolean isValid = false;
 		while(!isValid){
 			int whereToGo = rand.nextInt(8);
