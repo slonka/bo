@@ -15,10 +15,14 @@ public class Solution {
 		this.map = map;
 	}
 	
+	public Solution getCopy() {
+		return new Solution(this.getMap());
+	}
+	
 	public int f() {
 		int res = 0;
 		for(Point p : steps) {
-			res += map.getCost(p);
+			res += map.getCost(p) + 1;
 		}
 		this.f=res;
 		return res;
