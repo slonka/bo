@@ -8,8 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import pl.edu.agh.student.pathfinding.solver.DijkstraSolver;
-
 public class RightPanel extends JPanel {
 
 	public JLabel djikstraTimeLabel, cuckcooTimeLabel;
