@@ -22,10 +22,10 @@ public class RightPanel extends JPanel {
 		
 		this.setBorder(BorderFactory.createEtchedBorder());
 		
-		djikstraTimeLabel = new JLabel("Czas djikstra: ");
-		cuckcooTimeLabel = new JLabel("Czas cuckoo: ");
-		djikstraCostLabel = new JLabel("Koszt dijkstra: ");
-		cuckooCostLabel = new JLabel("Koszt cuckoo: ");
+		djikstraTimeLabel = new JLabel("Djikstra time: ");
+		cuckcooTimeLabel = new JLabel("Cuckoo time: ");
+		djikstraCostLabel = new JLabel("Dijkstra cost: ");
+		cuckooCostLabel = new JLabel("Cuckoo cost: ");
 		
 		djikstraTime = new JTextField();
 		djikstraTime.setEditable(false);

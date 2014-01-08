@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
 
 import pl.edu.agh.student.pathfinding.Solution;
 import pl.edu.agh.student.pathfinding.map.IMap;
@@ -107,6 +109,19 @@ public class DijkstraSolver implements ISolver {
 		return neighbour.x < 0 || neighbour.x >= map.getWidth() || neighbour.y < 0 || neighbour.y >= map.getHeight();
 	}
 
+	public FutureTask<Solution> getSolverTask() {
+		FutureTask<Solution> t = new FutureTask<Solution>(new Callable<Solution>() {
+
+			@Override
+			public Solution call() throws Exception {
+				return solve();
+			}
+
+		});
+		t.run();
+		return t;
+	}
+	
 	private Solution computeSolution() {
 		Deque<Point> pathBreadcrumb = new LinkedList<>();
 		Point current = map.getFinishPoint();
