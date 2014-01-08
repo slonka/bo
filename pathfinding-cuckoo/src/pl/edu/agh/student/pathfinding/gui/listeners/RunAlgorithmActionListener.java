@@ -55,8 +55,24 @@ public class RunAlgorithmActionListener implements ActionListener {
 		CuckooSolver solver = new CuckooSolver(randomPathGenerator, solutionModifier, nests, maxGeneration , pa);
 		DijkstraSolver dijkstraSolver = new DijkstraSolver(map);
 		
-		Solution solution = solver.solve();
+		long start = System.nanoTime();
 		Solution dijkstraSolution = dijkstraSolver.solve();
+		long end = System.nanoTime();
+		long time = end - start;
+		System.out.println("Dijkstra:");
+		System.out.println("sekundy:" + (time / 1E9));
+		System.out.println("ms:" + (time / 1E6));
+		System.out.println("Koszt: " + dijkstraSolution.f);
+		
+		start = System.nanoTime();		
+		Solution solution = solver.solve();
+		end = System.nanoTime();
+		time = end - start;
+		System.out.println("Cuckoo \t" + (end-start));
+		System.out.println("sekundy:" + (time / 1E9));
+		System.out.println("ms:" + (time / 1E6));
+		System.out.println("Koszt: " + dijkstraSolution.f);
+		
 		
 		SolutionImageBuilder builder = new SolutionImageBuilder();
 		builder.addSolution(solution, 0xFFFF0000);

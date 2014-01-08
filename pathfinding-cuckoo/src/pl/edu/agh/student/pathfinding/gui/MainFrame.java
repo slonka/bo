@@ -1,5 +1,6 @@
 package pl.edu.agh.student.pathfinding.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
@@ -16,6 +17,7 @@ import org.jdesktop.layout.GroupLayout;
 
 import pl.edu.agh.student.pathfinding.gui.components.BottomPanel;
 import pl.edu.agh.student.pathfinding.gui.components.ImagePanel;
+import pl.edu.agh.student.pathfinding.gui.components.RightPanel;
 
 public class MainFrame extends JFrame implements Observer {
 
@@ -41,8 +43,8 @@ public class MainFrame extends JFrame implements Observer {
 		setPreferredSize(new Dimension(800, 620));
 		
 		mainMapPanel = new ImagePanel(580, 470);
-		rightPanel = new JPanel();
-		initRightPanel(190, 470);
+		rightPanel = new RightPanel(190, 470);
+		
 		bottomPanel = new BottomPanel(this);
 	
 		buildFrameView();
