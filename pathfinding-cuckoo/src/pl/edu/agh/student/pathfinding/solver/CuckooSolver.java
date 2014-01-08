@@ -3,6 +3,8 @@ package pl.edu.agh.student.pathfinding.solver;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
 
 import pl.edu.agh.student.pathfinding.IPathGenerator;
 import pl.edu.agh.student.pathfinding.ISolutionModifier;
@@ -39,9 +41,23 @@ public class CuckooSolver implements ISolver {
 		});
 	}
 
+	
+	public FutureTask<Solution> getSolverTask() {
+		FutureTask<Solution> t = new FutureTask<Solution>(new Callable<Solution>() {
+
+			@Override
+			public Solution call() throws Exception {
+				return solve();
+			}
+
+		});
+		t.run();
+		return t;
+	}
+	
 	@Override
 	public Solution solve() {
-
+	
 		// Generate an initial population of n host nests
 		for (int i = 0; i < n; i++) {
 			nest[i] = generator.getSolution();

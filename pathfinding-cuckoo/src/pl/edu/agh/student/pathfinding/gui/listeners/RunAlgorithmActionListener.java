@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import pl.edu.agh.student.pathfinding.RandomPathGenerator;
@@ -51,7 +54,7 @@ public class RunAlgorithmActionListener implements ActionListener {
 			pa = data.getCuckooDyingProbability();
 			nests = data.getInitialNestAmount();
 		} catch (InvalidAlgorithmParameterValueException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Invalid algorithm parameter.");
 			return;
 		}
 		
@@ -68,7 +71,17 @@ public class RunAlgorithmActionListener implements ActionListener {
 		System.out.println("Koszt: " + dijkstraSolution.f());
 		
 		start = System.nanoTime();
-		Solution solution = solver.solve();
+		
+		FutureTask<Solution> solveTask = solver.getSolverTask();
+		Solution solution = null;
+		try {
+			solution = solveTask.get();
+		} catch (InterruptedException | ExecutionException e) {
+			JOptionPane.showMessageDialog(null, "Execution interrupted.");
+			return;
+		}
+		
+		
 		end = System.nanoTime();
 		time = end - start;
 		System.out.println("Cuckoo \t");
