@@ -50,7 +50,7 @@ public class BottomPanel extends JPanel {
 
 	private void createRunAlgorithmButton() {
 		runAlgorithmButton.setText("Run algorithm");
-		runAlgorithmButton.addActionListener(new RunAlgorithmActionListener(parentMainFrame.getAlgorithmData()));
+		runAlgorithmButton.addActionListener(new RunAlgorithmActionListener(parentMainFrame.getAlgorithmData(), parentMainFrame.getRightPanel()));
 	}
 
 	private void createLoadButton() {

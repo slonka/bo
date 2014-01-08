@@ -100,5 +100,9 @@ public class MainFrame extends JFrame implements Observer {
 	public AlgorithmData getAlgorithmData() {
 		return algorithmData;
 	}
+
+	public JPanel getRightPanel() {
+		return rightPanel;
+	}
 	
 }

@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import pl.edu.agh.student.pathfinding.solver.DijkstraSolver;
+
 public class RightPanel extends JPanel {
 
 	public JLabel djikstraTimeLabel, cuckcooTimeLabel;
@@ -50,5 +52,13 @@ public class RightPanel extends JPanel {
 				
 		this.setPreferredSize(new Dimension(width, height));
 		
+	}
+
+	public void updateData(double dTime, int dCost, double cTime, int cCost) {
+		djikstraCost.setText(new Integer(dCost).toString());
+		cuckooCost.setText(new Integer(cCost).toString());
+		djikstraTime.setText(new Double(dTime).toString()+"s");
+		cuckooTime.setText(new Double(cTime).toString()+"s");
+		repaint();
 	}
 }

@@ -6,25 +6,28 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-import pl.edu.agh.student.pathfinding.ISolutionModifier;
+import javax.swing.JPanel;
+
 import pl.edu.agh.student.pathfinding.RandomPathGenerator;
 import pl.edu.agh.student.pathfinding.SmartSolutionModifier;
 import pl.edu.agh.student.pathfinding.Solution;
 import pl.edu.agh.student.pathfinding.gui.AlgorithmData;
+import pl.edu.agh.student.pathfinding.gui.components.RightPanel;
 import pl.edu.agh.student.pathfinding.gui.exception.InvalidAlgorithmParameterValueException;
 import pl.edu.agh.student.pathfinding.map.BitmapMap;
 import pl.edu.agh.student.pathfinding.map.IMap;
 import pl.edu.agh.student.pathfinding.solver.CuckooSolver;
 import pl.edu.agh.student.pathfinding.solver.DijkstraSolver;
-import pl.edu.agh.student.pathfinding.solver.ISolver;
 import pl.edu.agh.student.pathfinding.util.SolutionImageBuilder;
 
 public class RunAlgorithmActionListener implements ActionListener {
 
 	private AlgorithmData data;
+	private RightPanel rightPanel;
 
-	public RunAlgorithmActionListener(AlgorithmData data) {
+	public RunAlgorithmActionListener(AlgorithmData data, JPanel rightPanel) {
 		this.data = data;
+		this.rightPanel = (RightPanel) rightPanel;
 	}
 	
 	@Override
@@ -60,7 +63,8 @@ public class RunAlgorithmActionListener implements ActionListener {
 		long end = System.nanoTime();
 		long time = end - start;
 		System.out.println("Dijkstra:");
-		System.out.println("sekundy:" + ( ((int)time / 1E3)  / 1E6));
+		double dTime = ((int)time / 1E3)  / 1E6;
+		System.out.println("sekundy:" + dTime);
 		System.out.println("Koszt: " + dijkstraSolution.f());
 		
 		start = System.nanoTime();
@@ -68,8 +72,12 @@ public class RunAlgorithmActionListener implements ActionListener {
 		end = System.nanoTime();
 		time = end - start;
 		System.out.println("Cuckoo \t");
-		System.out.println("sekundy:" + ( ((int)time / 1E3)  / 1E6));
+		double cTime = ((int)time / 1E3)  / 1E6;
+		System.out.println("sekundy:" + cTime);
 		System.out.println("Koszt: " + solution.f());
+		
+		
+		rightPanel.updateData(dTime, dijkstraSolution.f(), cTime, solution.f());
 		
 		SolutionImageBuilder builder = new SolutionImageBuilder();
 		builder.addSolution(solution, 0xFFFF0000);
