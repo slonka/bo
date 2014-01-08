@@ -60,19 +60,16 @@ public class RunAlgorithmActionListener implements ActionListener {
 		long end = System.nanoTime();
 		long time = end - start;
 		System.out.println("Dijkstra:");
-		System.out.print("sekundy:" + (time / 1E9));
-		System.out.println("ms:" + (time / 1E6));
-		System.out.println("Koszt: " + dijkstraSolution.f);
+		System.out.println("sekundy:" + ( ((int)time / 1E3)  / 1E6));
+		System.out.println("Koszt: " + dijkstraSolution.f());
 		
-		start = System.nanoTime();		
+		start = System.nanoTime();
 		Solution solution = solver.solve();
 		end = System.nanoTime();
 		time = end - start;
-		System.out.println("Cuckoo \t" + (end-start));
-		System.out.println("sekundy:" + (time / 1E9));
-		System.out.println("ms:" + (time / 1E6));
-		System.out.println("Koszt: " + dijkstraSolution.f);
-		
+		System.out.println("Cuckoo \t");
+		System.out.println("sekundy:" + ( ((int)time / 1E3)  / 1E6));
+		System.out.println("Koszt: " + solution.f());
 		
 		SolutionImageBuilder builder = new SolutionImageBuilder();
 		builder.addSolution(solution, 0xFFFF0000);
