@@ -5,14 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import pl.edu.agh.student.pathfinding.RandomPathGenerator;
@@ -58,58 +51,37 @@ public class RunAlgorithmActionListener implements ActionListener {
 			pa = data.getCuckooDyingProbability();
 			nests = data.getInitialNestAmount();
 		} catch (InvalidAlgorithmParameterValueException e) {
-			JOptionPane.showMessageDialog(null, "Invalid algorithm parameter.");
+			e.printStackTrace();
 			return;
 		}
 		
 		CuckooSolver solver = new CuckooSolver(randomPathGenerator, solutionModifier, nests, maxGeneration , pa);
 		DijkstraSolver dijkstraSolver = new DijkstraSolver(map);
 		
-		long start = System.nanoTime();
-		FutureTask<Solution> solveDjikstraTask = dijkstraSolver.getSolverTask();
-		Solution djikstraSolution = null;
-		try {
-			djikstraSolution = solveDjikstraTask.get(10, TimeUnit.SECONDS);
-		} catch (InterruptedException | ExecutionException e) {
-			JOptionPane.showMessageDialog(null, "Execution interrupted.");
-			return;
-		} catch (TimeoutException e) {
-			JOptionPane.showMessageDialog(null, "Djikstra Algorithm - Time limit exceeded.");
-		}
-		
-		long end = System.nanoTime();
+		long start = System.currentTimeMillis();
+		Solution dijkstraSolution = dijkstraSolver.solve();
+		long end = System.currentTimeMillis();
 		long time = end - start;
 		System.out.println("Dijkstra:");
-		double dTime = ((int)time / 1E3)  / 1E6;
+		double dTime = time / 1E3;
 		System.out.println("sekundy:" + dTime);
-		System.out.println("Koszt: " + djikstraSolution.f());
+		System.out.println("Koszt: " + dijkstraSolution.f());
 		
-		start = System.nanoTime();
-		
-		FutureTask<Solution> solveTask = solver.getSolverTask();
-		Solution solution = null;
-		try {
-			solution = solveTask.get(10, TimeUnit.SECONDS);
-		} catch (InterruptedException | ExecutionException e) {
-			JOptionPane.showMessageDialog(null, "Execution interrupted.");
-			return;
-		} catch (TimeoutException e) {
-			JOptionPane.showMessageDialog(null, "Cuckoo Algorithm - Time limit exceeded.");
-		}
-		
-		end = System.nanoTime();
+		start = System.currentTimeMillis();
+		Solution solution = solver.solve();
+		end = System.currentTimeMillis();
 		time = end - start;
 		System.out.println("Cuckoo \t");
-		double cTime = ((int)time / 1E3)  / 1E6;
+		double cTime = time / 1E3;
 		System.out.println("sekundy:" + cTime);
 		System.out.println("Koszt: " + solution.f());
 		
 		
-		rightPanel.updateData(dTime, djikstraSolution.f(), cTime, solution.f());
+		rightPanel.updateData(dTime, dijkstraSolution.f(), cTime, solution.f());
 		
 		SolutionImageBuilder builder = new SolutionImageBuilder();
 		builder.addSolution(solution, 0xFFFF0000);
-		builder.addSolution(djikstraSolution, 0xFF00FF00);
+		builder.addSolution(dijkstraSolution, 0xFF00FF00);
 		Image generateImage = builder.build();
 		//generateImage = SolutionImageBuilder.generateImage(solution, trackColor)
 		data.setMap(generateImage);
