@@ -53,7 +53,7 @@ public class CuckooSolver implements ISolver {
 			// performing random operations;
 			int i = r.nextInt(n);
 			Solution randomNest = nest[i];
-			//FIXME: randomNest = solutionModifier.modify(nest[i]);
+			randomNest = solutionModifier.modify(nest[i]);
 
 			// Evaluate its quality/fitness
 			int fi = randomNest.f();

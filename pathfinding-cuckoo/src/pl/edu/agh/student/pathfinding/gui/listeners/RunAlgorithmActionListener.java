@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import pl.edu.agh.student.pathfinding.ISolutionModifier;
 import pl.edu.agh.student.pathfinding.RandomPathGenerator;
+import pl.edu.agh.student.pathfinding.SmartSolutionModifier;
 import pl.edu.agh.student.pathfinding.Solution;
 import pl.edu.agh.student.pathfinding.gui.AlgorithmData;
 import pl.edu.agh.student.pathfinding.gui.exception.InvalidAlgorithmParameterValueException;
@@ -37,7 +38,7 @@ public class RunAlgorithmActionListener implements ActionListener {
 		}
 
 		RandomPathGenerator randomPathGenerator = new RandomPathGenerator(map);
-	
+		SmartSolutionModifier solutionModifier = new SmartSolutionModifier();
 				
 		int maxGeneration = 10;
 		int nests = 10;
@@ -51,7 +52,7 @@ public class RunAlgorithmActionListener implements ActionListener {
 			return;
 		}
 		
-		CuckooSolver solver = new CuckooSolver(randomPathGenerator, (ISolutionModifier)null, nests, maxGeneration , pa);
+		CuckooSolver solver = new CuckooSolver(randomPathGenerator, solutionModifier, nests, maxGeneration , pa);
 		DijkstraSolver dijkstraSolver = new DijkstraSolver(map);
 		
 		Solution solution = solver.solve();

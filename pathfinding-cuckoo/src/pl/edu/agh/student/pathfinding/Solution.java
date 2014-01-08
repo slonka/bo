@@ -16,7 +16,12 @@ public class Solution {
 	}
 	
 	public Solution getCopy() {
-		return new Solution(this.getMap());
+		Solution newObj = new Solution(this.getMap());
+		
+		newObj.steps = new ArrayList<>(this.steps);
+		newObj.f = this.f;
+		
+		return newObj;
 	}
 	
 	public int f() {
