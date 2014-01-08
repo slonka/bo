@@ -60,7 +60,7 @@ public class RunAlgorithmActionListener implements ActionListener {
 		long end = System.nanoTime();
 		long time = end - start;
 		System.out.println("Dijkstra:");
-		System.out.println("sekundy:" + (time / 1E9));
+		System.out.print("sekundy:" + (time / 1E9));
 		System.out.println("ms:" + (time / 1E6));
 		System.out.println("Koszt: " + dijkstraSolution.f);
 		
