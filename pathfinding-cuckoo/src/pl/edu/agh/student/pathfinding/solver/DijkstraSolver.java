@@ -54,6 +54,8 @@ public class DijkstraSolver implements ISolver {
 		}
 	}
 	
+	private static final int INFINITE_DISTANCE = Integer.MAX_VALUE/2;
+	
 	private IMap map;
 	private PriorityQueue<Point> queue;
 	private int[][] distances;
@@ -76,7 +78,7 @@ public class DijkstraSolver implements ISolver {
 					distances[i][j] = 0;
 				} else {
 					queue.add(new Point(i, j));
-					distances[i][j] = Integer.MAX_VALUE;
+					distances[i][j] = INFINITE_DISTANCE;
 				}
 			}
 		}
@@ -93,7 +95,7 @@ public class DijkstraSolver implements ISolver {
 			Point current = queue.poll();
 			for(Direction direction : Direction.values()) {
 				Point neighbour = direction.move(current);
-				if(outOfBounds(neighbour)){
+				if(outOfBounds(neighbour) || !map.isAccessible(neighbour)){
 					continue;
 				}
 				if(distances[neighbour.x][neighbour.y] > distances[current.x][current.y] + map.getCost(current) + 1) {
