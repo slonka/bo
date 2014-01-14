@@ -61,6 +61,7 @@ public class CuckooSolver implements ISolver {
 		// Generate an initial population of n host nests
 		for (int i = 0; i < n; i++) {
 			nest[i] = generator.getSolution();
+			nest[i].algirthmIteration = 0;
 		}
 
 		for (int t = 0; t < maxGeneration; t++) { // While (t<MaxGeneration) or
@@ -69,6 +70,8 @@ public class CuckooSolver implements ISolver {
 			// performing random operations;
 			int i = r.nextInt(n);
 			Solution randomNest = nest[i];
+			nest[i].algirthmIteration = t;
+			
 			randomNest = solutionModifier.modify(nest[i]);
 
 			// Evaluate its quality/fitness
@@ -87,6 +90,7 @@ public class CuckooSolver implements ISolver {
 			// A fraction (pa) of the worse nests are abandoned and new ones are built;
 			for(i = n-toAbandon; i<n; i++) {
 				nest[i] = generator.getSolution();
+				nest[i].algirthmIteration = t;
 			}
 			
 			// Rank the solutions/nests and find the current best;

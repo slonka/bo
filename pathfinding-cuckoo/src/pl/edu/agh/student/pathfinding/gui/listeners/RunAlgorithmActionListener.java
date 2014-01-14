@@ -77,7 +77,7 @@ public class RunAlgorithmActionListener implements ActionListener {
 		System.out.println("Koszt: " + solution.f());
 		
 		
-		rightPanel.updateData(dTime, dijkstraSolution.f(), cTime, solution.f());
+		rightPanel.updateData(dTime, dijkstraSolution.f(), cTime, solution.f(), solution.algirthmIteration);
 		
 		SolutionImageBuilder builder = new SolutionImageBuilder();
 		builder.addSolution(solution, 0xFFFF0000);

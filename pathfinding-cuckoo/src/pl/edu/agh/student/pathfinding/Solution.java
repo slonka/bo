@@ -10,6 +10,7 @@ public class Solution {
 	private List<Point> steps = new ArrayList<Point>();
 	private IMap map;
 	public int f = -1;
+	public int algirthmIteration;
 	
 	public Solution(IMap map) {
 		this.map = map;

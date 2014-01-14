@@ -16,6 +16,8 @@ public class RightPanel extends JPanel {
 	public JTextField djikstraTime, cuckooTime;
 	public JLabel djikstraCostLabel, cuckooCostLabel;
 	public JTextField djikstraCost, cuckooCost;
+	public JLabel algIterationText;
+	public JTextField algIterationValue;
 	
 	public RightPanel(int width, int height) {
 		super();
@@ -37,6 +39,10 @@ public class RightPanel extends JPanel {
 		cuckooCost = new JTextField();
 		cuckooCost.setEditable(false);
 		
+		algIterationText = new JLabel("Algoritm iteration:");
+		algIterationValue = new JTextField();
+		algIterationValue.setEditable(false);
+		
 		GridLayout layout = new GridLayout(16, 1);
 		setLayout(layout);
 		
@@ -49,16 +55,20 @@ public class RightPanel extends JPanel {
 		add(cuckooTime);
 		add(cuckooCostLabel);
 		add(cuckooCost);
+		
+		add(algIterationText);
+		add(algIterationValue);
 				
 		this.setPreferredSize(new Dimension(width, height));
 		
 	}
 
-	public void updateData(double dTime, int dCost, double cTime, int cCost) {
+	public void updateData(double dTime, int dCost, double cTime, int cCost, int iteration) {
 		djikstraCost.setText(new Integer(dCost).toString());
 		cuckooCost.setText(new Integer(cCost).toString());
 		djikstraTime.setText(new Double(dTime).toString()+"s");
 		cuckooTime.setText(new Double(cTime).toString()+"s");
+		algIterationValue.setText(new Integer(iteration).toString());
 		repaint();
 	}
 }
