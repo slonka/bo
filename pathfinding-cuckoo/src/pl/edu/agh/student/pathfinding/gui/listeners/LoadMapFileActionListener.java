@@ -22,7 +22,6 @@ public final class LoadMapFileActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent action) {
 		JFileChooser fileChooser = new JFileChooser();
 		File dir = new File("maps");
-		String property = System.getProperty("user.dir");
 		fileChooser.setCurrentDirectory(dir);
 		FileFilter fileFilter = new FileFilter() {
 			private final String[] okFileExtensions = new String[] { "jpg", "png", "gif", "bmp" };

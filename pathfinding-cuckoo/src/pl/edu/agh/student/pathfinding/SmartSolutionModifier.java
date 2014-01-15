@@ -2,10 +2,8 @@ package pl.edu.agh.student.pathfinding;
 
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.math.*;
 
 import pl.edu.agh.student.pathfinding.map.IMap;
 

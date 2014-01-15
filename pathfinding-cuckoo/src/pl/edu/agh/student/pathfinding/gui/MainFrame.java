@@ -1,14 +1,10 @@
 package pl.edu.agh.student.pathfinding.gui;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -79,15 +75,6 @@ public class MainFrame extends JFrame implements Observer {
 								Short.MAX_VALUE)
 						.add(bottomPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE).addContainerGap()));
-	}
-
-	private void initRightPanel(int width, int height) {
-		GroupLayout jPanel2Layout = new GroupLayout(rightPanel);
-		rightPanel.setLayout(jPanel2Layout);
-		jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(GroupLayout.LEADING).add(0, width,
-				Short.MAX_VALUE));
-		jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(GroupLayout.LEADING).add(0, height,
-				Short.MAX_VALUE));
 	}
 
 	@Override

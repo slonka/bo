@@ -2,7 +2,6 @@ package pl.edu.agh.student.pathfinding;
 
 import java.awt.Point;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 import pl.edu.agh.student.pathfinding.map.IMap;
@@ -101,25 +100,6 @@ public class RandomPathGenerator implements IPathGenerator{
 				 (currentPoint.x < map.getWidth()-1 ? (visitationTable[currentPoint.x + 1][currentPoint.y] || !map.isAccessible(new Point(currentPoint.x + 1, currentPoint.y))) : true) &&
 				 (currentPoint.x < map.getWidth()-1 && currentPoint.y < map.getHeight()-1 ? (visitationTable[currentPoint.x + 1][currentPoint.y + 1] || !map.isAccessible(new Point(currentPoint.x + 1, currentPoint.y + 1))) : true)
 				);
-	}
-	
-	private void print(Solution newSolution){
-		List<Point> lista = newSolution.getSteps();
-		char[][] tablica = new char[map.getWidth()][map.getHeight()];
-		for(char[] wiersz : tablica){
-			for(char znak : wiersz){
-				znak = '*';
-			}
-		}
-		for(Point p : lista){
-			tablica[p.x][p.y]= 'x'; 
-		}
-		for(char[] wiersz : tablica){
-			for(char znak : wiersz){
-				System.out.print(znak);
-			}
-			System.out.println();
-		}
 	}
 
 }

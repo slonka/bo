@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pl.edu.agh.student.pathfinding.RandomPathGenerator;
-import pl.edu.agh.student.pathfinding.map.IMap;
 import pl.edu.agh.student.pathfinding.map.BitmapMap;
 
 public class RandomPathGeneratorTest{

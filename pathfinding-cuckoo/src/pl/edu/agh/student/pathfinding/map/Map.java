@@ -3,10 +3,8 @@ package pl.edu.agh.student.pathfinding.map;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.SwingUtilities;
 
 @Deprecated
 public class Map {

@@ -1,7 +1,5 @@
 package pl.edu.agh.student.pathfinding.tests;
 
-import static org.junit.Assert.*;
-
 import java.awt.Point;
 
 import org.junit.Assert;

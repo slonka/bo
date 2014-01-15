@@ -8,10 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import pl.edu.agh.student.pathfinding.solver.DijkstraSolver;
-
 public class RightPanel extends JPanel {
-
+	private static final long serialVersionUID = 1L;
+	
 	public JLabel djikstraTimeLabel, cuckcooTimeLabel;
 	public JTextField djikstraTime, cuckooTime;
 	public JLabel djikstraCostLabel, cuckooCostLabel;
